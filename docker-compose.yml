@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    container_name: flask-test-site
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    environment:
+      - FLASK_ENV=development
+    restart: unless-stopped
+    

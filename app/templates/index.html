@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестовый сайт на Flask</title>
+    <style>
+        body {font-family: system-ui, sans-serif; margin:40px; background:#f8f9fa; color:#212529;}
+        .container {max-width:800px; margin:0 auto; background:white; padding:40px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.1);}
+        h1 {color:#4361ee;}
+        .counter {font-size:3em; color:#ff006e; font-weight:bold;}
+        input[type=text] {padding:12px; width:320px; font-size:1.1em; border:2px solid #4361ee; border-radius:8px;}
+        input[type=submit] {padding:12px 24px; background:#4361ee; color:white; border:none; border-radius:8px; cursor:pointer; font-size:1.1em;}
+        input[type=submit]:hover {background:#3a56e0;}
+        .flash {padding:15px; background:#06d6a0; color:white; border-radius:8px; margin:15px 0;}
+        footer {margin-top:60px; color:#8d99ae; text-align:center;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Этот сайт создан при помощи Flask</h1>
+        <p>Сегодня: <strong>{{ date }}</strong> | Время: <strong>{{ time }}</strong></p>
+        <div class="counter">Посещений: {{ visits }}</div>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <div class="flash">{{ msg }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
